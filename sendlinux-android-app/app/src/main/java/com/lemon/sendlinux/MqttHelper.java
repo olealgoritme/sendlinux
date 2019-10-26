@@ -8,7 +8,6 @@ import org.eclipse.paho.client.mqttv3.persist.MemoryPersistence;
 
 public class MqttHelper {
 
-    private boolean msgSent = false;
 
     public void send(byte[] msgBuf, String UUID) {
         String endpoint     = "device/android/" + UUID;
@@ -29,17 +28,11 @@ public class MqttHelper {
             MqttMessage message = new MqttMessage(msgBuf);
             message.setQos(qos);
 
-            if(!msgSent) {
-                mqttClient.publish(endpoint, message);
-                msgSent = true;
-            }
-
+            mqttClient.publish(endpoint, message);
             mqttClient.disconnect();
-            System.exit(0);
 
         } catch(MqttException me) {
             me.printStackTrace();
-            msgSent = false;
         }
 
     }

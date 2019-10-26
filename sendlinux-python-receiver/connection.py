@@ -4,8 +4,15 @@ import logging
 import logging.handlers
 import socket
 import paho.mqtt.client as mqtt
+import signal
+import sys
 
+# Interrupt handler
+def signal_handler(sig, frame):
+        sys.exit(0)
+signal.signal(signal.SIGINT, signal_handler)
 
+# Setttings / Config
 host = socket.gethostname()
 config = configparser.ConfigParser()
 config.read('settings.conf')
@@ -41,17 +48,16 @@ def on_message(client, userdata, message):
        arr = ['youtu', 'vimeo', 'twitch']
        if any(c in decoded_msg for c in arr):
             print("Good enough! Found a streamable video")
-            subprocess.run(['mpv', decoded_msg, '--really-quiet'])
-#############
+            subprocess.Popen(['mpv', decoded_msg, '--really-quiet'])
 
 client = mqtt.Client("sendlinux" + "." + host)
 client.on_message = on_message
 client.username_pw_set(username=_username,password=_password)
 
-logging.debug("Connecting to broker: " + _broker_address)
 client.connect(_broker_address)
+logging.debug("Connecting to broker: " + _broker_address)
 
-logging.debug("Subbed to endpoint:" + endpoint)
 client.subscribe(endpoint)
+logging.debug("Subbed to endpoint:" + endpoint)
 
-client.loop_forever()
+client.loop_forever(timeout=0, max_packets=10000, retry_first_connection=False)

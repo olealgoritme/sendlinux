@@ -1,5 +1,5 @@
 share youtube-links etc from android phone to your linux desktop
-have mpv launch them instantly
+and have mpv launch them instantly
 
 #1 install dependencies
 #2 install android app

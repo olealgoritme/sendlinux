@@ -31,7 +31,7 @@ def device_callback(client, userdata, message):
     arr = ['youtu', 'vimeo', 'twitch'] # match video streams for using with mpv
     if any(c in decoded_msg for c in arr):
         print("Good enough! Found a streamable video")
-        subprocess.Popen(['mpv', decoded_msg])
+        subprocess.Popen(['mpv', decoded_msg, "--really-quiet"])
     client.loop()
 
 

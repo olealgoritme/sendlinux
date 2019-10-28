@@ -1,0 +1,11 @@
+
+{
+  "_IMPORTANT": "This file needs to place into ~/.config/chromium/NativeMessagingHosts/",
+  "name": "mpv",
+  "description": "mpv video and stream player",
+  "path": "/usr/bin/mpv",
+  "type": "stdio",
+  "allowed_origins": [
+    "chrome-extension://knldjmfmopnpolahpmmgbagdohdnhkik/"
+  ]
+}

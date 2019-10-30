@@ -6,10 +6,10 @@ import org.eclipse.paho.client.mqttv3.MqttException;
 import org.eclipse.paho.client.mqttv3.MqttMessage;
 import org.eclipse.paho.client.mqttv3.persist.MemoryPersistence;
 
-public class MqttHelper {
+class MqttHelper {
 
 
-    public void send(byte[] msgBuf, String UUID) {
+    void send(byte[] msgBuf, String UUID) {
         String endpoint     = "device/android/" + UUID;
         int qos             = 2;
         String broker       = "tcp://vmspinup.no:1883";

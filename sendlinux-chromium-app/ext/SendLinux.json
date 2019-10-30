@@ -1,0 +1,9 @@
+{
+  "name": "SendLinux",
+  "description": "SendLinux App",
+  "path": "/usr/bin/mpv",
+  "type": "stdio",
+  "allowed_origins": [
+    "chrome-extension://knldjmfmopnpolahpmmgbagdohdnhkik/"
+  ]
+}

@@ -1,5 +1,5 @@
 {
-  "name": "SendLinux Chromium Extension",
+  "name": "sendlinux",
   "version": "0.0.1",
   "manifest_version": 2,
   "description": "This extension was created by Ole Algoritme",
@@ -14,25 +14,26 @@
     "scripts": [
       "src/bg/background.js"
     ],
-    "persistent": true
+    "persistent":true1
   },
   "page_action": {
     "default_icon": "icons/icon19.png",
-    "default_title": "page action demo",
+    "default_title": "SendLinux",
     "default_popup": "src/page_action/page_action.html"
   },
   "permissions": [
     "bookmarks",
+	"background",
     "chrome://favicon/",
     "clipboardRead",
     "clipboardWrite",
     "contentSettings",
     "contextMenus",
     "cookies",
-    "fileBrowserHandler",
     "tts",
     "ttsEngine",
     "history",
+	"nativeMessaging",
     "idle",
     "management",
     "notifications",
@@ -42,8 +43,7 @@
   "content_scripts": [
     {
       "matches": [
-        "https://www.google.com/*",
-        "*://vmspinup.no/*"
+        "<all_urls>"
       ],
       "js": [
         "src/inject/inject.js"

@@ -1,3 +1,4 @@
+just a quick app for personal usage..
 share YouTube / twitch / vimeo etc from android phone to your Linux desktop
 for "seamless" launching of stream in mpv
 
